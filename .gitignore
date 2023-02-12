@@ -1,0 +1,11 @@
+node_modules
+**/node_modules
+node_modules/
+
+.idea
+.vscode
+Thumbs.db
+*.iml
+*.DS_Store
+*.orig
+.htpasswd
