@@ -1,0 +1,175 @@
+.messages {
+  height: calc(100vh - 22rem);
+  height: calc(100dvh - 22rem);
+  overflow: auto;
+}
+
+.message-list {
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  min-height: 100%;
+  padding: .5rem;
+}
+
+.message {
+  align-self: baseline;
+  background: var(--message-user);
+  border-radius: .4rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  margin: .5rem;
+  padding: .5rem 1rem;
+  white-space: pre-line;
+  word-break: break-all;
+
+  &.self {
+    background: var(--message-self);
+  }
+}
+
+.message-header {
+  display: flex;
+  gap: .7rem;
+}
+
+.username {
+  color: var(--username);
+  flex: 1;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.time {
+  display: flex;
+  flex: 0;
+  font-size: .9rem;
+  font-weight: 400;
+  justify-content: flex-end;
+  margin: -.2rem -.6rem 0 -.1rem;
+  opacity: .6;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.wrapper {
+  background: url('img/bg.jpg') center no-repeat;
+  background-size: cover;
+  border: .1rem solid var(--border);
+  border-radius: .5rem;
+  display:grid;
+  grid-auto-flow: column dense;
+  grid-template-rows: 1fr 14rem;
+  height: calc(100vh - 8rem);
+  height: calc(100dvh - 8rem);
+  min-height: 30rem;
+  margin: 0 auto;
+  overflow: hidden;
+  width: 40rem;
+}
+
+.form {
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+}
+
+.textarea-wrapper {
+  padding: 1rem;
+  border-top: .1rem solid var(--border);
+}
+
+.textarea {
+  border: none;
+  background: var(--gray-1);
+  font-size: 1.2rem;
+  height: 7rem;
+  line-height: 1.4;
+  outline: none;
+  padding: 1rem;
+  resize: none;
+  width: 100%;
+}
+
+.actions {
+  border-top: .1rem solid var(--border);
+  display: flex;
+  justify-content: end;
+  padding: 1rem;
+}
+
+.button {
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: 167ms;
+  align-items: center;
+  border: none;
+  border-radius: 1.6rem;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  display: inline-flex;
+  justify-content: center;
+  min-width: 6.4rem;
+  max-width: 48rem;
+  overflow: hidden;
+  text-align: center;
+  transition-property: background-color,box-shadow,color;
+  vertical-align: middle;
+
+  font-size: 1.4rem;
+  min-height: 2.4rem;
+  padding: .2rem .8rem;
+  line-height: 2rem;
+
+  background-color: var(--action-background);
+  color: var(--action-color);
+
+  &[disabled],
+  &[disabled]:hover {
+    background-color: var(--action-disabled);
+    color: var(--action-text-disabled);
+    cursor: not-allowed;
+  }
+
+  &:hover {
+    background-color: var(--action-hover);
+  }
+}
+
+.login {
+  background: var(--background);
+  grid-template-rows: auto;
+  height: auto;
+  margin-top: 20dvh;
+  min-height: 0rem;
+  padding: 1rem;
+
+  .textarea-wrapper {
+    border: none;
+    padding: .5rem 1rem
+  }
+
+  .actions {
+    border: none;
+    padding: .5rem 1rem
+  }
+
+  .button {
+    width: 100%;
+    min-height: 4rem;
+  }
+}
+
+.input {
+  border: .1rem solid var(--border);
+  border-radius: .5rem;
+  background: var(--background);
+  font-size: 1.2rem;
+  height: 4rem;
+  line-height: 1.4;
+  outline: none;
+  padding: 1rem;
+  width: 100%;
+}

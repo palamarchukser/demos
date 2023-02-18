@@ -2,8 +2,8 @@
   "ts-node": {
     "transpileOnly": true,
     "compilerOptions": {
-      "module": "esnext",
-      "target": "ESNext"
+      "module": "commonjs",
+      "target": "es5"
     }
   },
   "compilerOptions": {

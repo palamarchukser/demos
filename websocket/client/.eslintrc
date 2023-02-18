@@ -4,22 +4,16 @@
     "node": true
   },
   "extends": [
-    "plugin:vue/vue3-recommended",
     "airbnb-base",
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
-  "parser": "vue-eslint-parser",
-  "parserOptions": {
-    "extraFileExtensions": [
-      ".vue"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "sourceType": "module",
-    "ecmaVersion": "latest"
-  },
+  "parser": "@typescript-eslint/parser",
   "plugins": [
     "@typescript-eslint"
   ],
+  "ignorePatterns": ["*.html"],
   "rules": {
     "indent": [
       "error",
@@ -50,7 +44,7 @@
     "@typescript-eslint/consistent-type-imports": [2, { "prefer": "type-imports" }],
     "@typescript-eslint/no-redeclare": "error",
     "@typescript-eslint/typedef": "error",
-    "@typescript-eslint/no-unused-vars": ["error", { "ignoreRestSiblings": true }],
+    "@typescript-eslint/no-unused-vars": ["off", { "ignoreRestSiblings": true }],
     "implicit-arrow-linebreak": 0,
     "arrow-parens": [
       "error",
@@ -136,26 +130,6 @@
         "requireReturn": false,
         "requireParamDescription": true,
         "requireReturnDescription": true
-      }
-    ],
-    "vue/html-closing-bracket-newline": ["error", {
-      "singleline": "never",
-      "multiline": "never"
-    }],
-    "vue/html-end-tags": "error",
-    "vue/max-attributes-per-line": 0,
-    "vue/multi-word-component-names": 0,
-    "vue/no-deprecated-scope-attribute": 0,
-    "vue/no-deprecated-slot-attribute": 0,
-    "vue/no-deprecated-slot-scope-attribute": 0,
-    "vue/no-multi-spaces": 0,
-    "vue/html-indent": [
-      "error",
-      2,
-      {
-        "attribute": 1,
-        "closeBracket": 0,
-        "ignores": []
       }
     ]
   },
