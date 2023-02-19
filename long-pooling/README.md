@@ -18,4 +18,4 @@ To start the server, run:
 ### `npm start`
 
 ## Results
-![photo_2023-02-19_22-30-05.jpg](public%2Fphoto_2023-02-19_22-30-05.jpg)
+![photo_2023-02-19_22-30-05.jpg](client%2Fpublic%2Fphoto_2023-02-19_22-30-05.jpg)

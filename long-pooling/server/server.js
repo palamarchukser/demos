@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.listen(3000, () => console.log('Server started'));
+app.listen(5000, () => console.log('Server started'));
 
 app.post('/add', ((req, res) => {
   emitter.emit('updateChat', req.body);
