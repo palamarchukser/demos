@@ -32,6 +32,7 @@
 .scroll-section {
   flex: 1;
   margin-bottom: -1.5rem;
+  max-height: 65vh;
   max-height: 65svh;
   overflow: auto;
   padding: 0 0 1.5rem;
@@ -47,6 +48,7 @@
   display: flex;
   flex: 1 100%;
   flex-direction: column;
+  min-height: 65vh;
   min-height: 65svh;
   overflow: hidden;
 }

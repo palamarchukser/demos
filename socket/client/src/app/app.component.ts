@@ -146,8 +146,8 @@ export class AppComponent implements AfterViewInit {
       return;
     }
 
-    this.socket = io('http://localhost:5000');
-    //this.socket = io('http://2515588.socketio.web.hosting-test.net/');
+    //this.socket = io('http://localhost:5000');
+    this.socket = io('http://2515588.socketio.web.hosting-test.net/');
 
     this.socket.on('connect', () => {
       this.connected = true;
@@ -174,7 +174,6 @@ export class AppComponent implements AfterViewInit {
     });
 
     this.socket.on('typingResponse', data => {
-      console.log(data);
       this.usersTyping = data.filter((user: UsersList) => user.id !== this.userID);
     });
 
@@ -218,7 +217,6 @@ export class AppComponent implements AfterViewInit {
   }
 
   public scrollBottomTextarea() {
-    this.scrollBlock.nativeElement.scrollIntoView();
-    document.getElementsByClassName('scroll-section')[0].scrollTo({ top: document.getElementsByClassName('scroll-section')[0].scrollHeight });
+    this.scrollBlock.nativeElement.scrollTo({ top: this.scrollBlock.nativeElement.scrollHeight });
   }
 }
