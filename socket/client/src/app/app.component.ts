@@ -147,6 +147,7 @@ export class AppComponent implements AfterViewInit {
     }
 
     this.socket = io('http://localhost:5000');
+    //this.socket = io('http://2515588.socketio.web.hosting-test.net/');
 
     this.socket.on('connect', () => {
       this.connected = true;
@@ -202,7 +203,7 @@ export class AppComponent implements AfterViewInit {
   public onKeyDown(e: KeyboardEvent) {
     const socket = this.socket;
 
-    if (e.key === 'Enter' && (e.shiftKey || e.ctrlKey)) {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
 
       this.sendMessage();
