@@ -1,4 +1,6 @@
 # Server-Sent practise
+Small Server Sent Events demo using Node, Express, React, Typescript.
+
 ## Client (React, TS):
 In the client directory, you can run:
 
@@ -15,4 +17,5 @@ To start the server, run:
 
 ## Results
 ![photo_1.jpg](client%2Fpublic%2Fphoto_1.jpg)
+<br/>
 ![photo_2.jpg](client%2Fpublic%2Fphoto_2.jpg)

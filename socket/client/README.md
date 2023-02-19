@@ -1,5 +1,5 @@
 # Server-Sent practise
-Small Server Sent Events demo using Node, Express, React, Typescript.
+Simple Chat demo using Socket.IO, Angular, JavaScript, TypeScript, HTML, SCSS.
 
 ## Client (React, TS):
 In the client directory, you can run:
@@ -11,11 +11,11 @@ Open [http://localhost:3006](http://localhost:3006) to view it in the browser.
 ### `npm run build`
 Builds the app for production to the `build` folder.
 
-## Server (Node, Express):
+## Server (Socket.IO, Express):
 To start the server, run:
 ### `npm start`
 
 ## Results
-![photo_1.jpg](public%2Fphoto_1.jpg)
+![photo_2023-02-19_20-03-48.jpg](src%2Fassets%2Fphoto_2023-02-19_20-03-48.jpg)
 <br/>
-![photo_2.jpg](public%2Fphoto_2.jpg)
+![photo_2023-02-19_20-09-43.jpg](src%2Fassets%2Fphoto_2023-02-19_20-09-43.jpg)

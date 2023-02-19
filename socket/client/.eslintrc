@@ -31,8 +31,8 @@
       "error",
       "always"
     ],
-    "no-alert": 2,
-    "no-console": 2,
+    "no-alert": 0,
+    "no-console": 0,
     "no-redeclare": 2,
     "no-debugger": 2,
     "@typescript-eslint/array-type": 0,
@@ -82,7 +82,7 @@
         "ignoreComments": true,
         "ignoreTemplateLiterals": true,
         "ignoreRegExpLiterals": true
-      },
+      }
     ],
     "no-async-promise-executor": 0,
     "no-else-return": 0,
