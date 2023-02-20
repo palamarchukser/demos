@@ -171,7 +171,7 @@ export class AppComponent implements AfterViewInit {
     });
 
     this.socket.on('messageResponse', data => {
-      if (data.id !== this.userID && Boolean(this.messages.length)) {
+      if (data[data.length - 1]?.id !== this.userID && Boolean(this.messages.length)) {
         this.audioPlayerRef?.nativeElement?.play();
       }
 
@@ -187,7 +187,9 @@ export class AppComponent implements AfterViewInit {
     });
 
     this.socket.on('typingResponse', data => {
-      this.usersTyping = data.filter((user: UsersList) => user.id !== this.userID);
+      const connectedUsernames = this.users.map(a => a.username);
+
+      this.usersTyping = data.filter((user: UsersList) => user.id !== this.userID && connectedUsernames.includes(user.username));
     });
 
     this.socket.on('disconnect', () => {
@@ -226,7 +228,7 @@ export class AppComponent implements AfterViewInit {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       socket?.emit('stopTyping', { username: this.username, id: socket?.id });
-    }, 1000);
+    }, 2000);
   }
 
   public scrollBottomTextarea() {

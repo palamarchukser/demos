@@ -15,14 +15,16 @@ let messages = [];
 
 socketIO.on('connection', (socket) => {
   socket.on('message', data => {
-
     messages.push(data)
     socketIO.emit('messageResponse', messages)
   });
 
   socket.on('typing', data => {
-    typingUsers.push(data)
-    socket.broadcast.emit('typingResponse', users)
+    if (typingUsers.filter(e => e.username === data.username).length === 0) {
+      typingUsers.push(data)
+    }
+
+    socket.broadcast.emit('typingResponse', typingUsers)
   })
 
   socket.on('stopTyping', data => {
@@ -36,21 +38,25 @@ socketIO.on('connection', (socket) => {
   })
 
   socket.on('disconnect', () => {
+    typingUsers = [];
+    socket.broadcast.emit('typingResponse', [])
     const disconnectedMessage = {
       id: '',
-      username: users.filter(user => user.id === socket.id)[0].username,
+      username: users.filter(user => user.id === socket.id)[0]?.username,
       message: '',
       event: 'disconnection',
     };
+
     messages.push(disconnectedMessage);
     socketIO.emit('messageResponse', messages)
 
     users = users.filter(user => user.id !== socket.id)
     socketIO.emit('newUserResponse', users)
+
     socket.disconnect()
   });
 });
 
-http.listen(5000 || process.env.PORT, () => {
+http.listen(process.env.PORT || 5000, () => {
   console.log('Server listening on 5000');
 });
