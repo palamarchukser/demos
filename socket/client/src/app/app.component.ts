@@ -4,6 +4,7 @@ import { io } from 'socket.io-client';
 import type { ElementRef, AfterViewInit } from '@angular/core';
 import { MessageDto } from './models/messageDto';
 import type { UsersList } from './models/usersList';
+import { urlFilter } from './utils/url-filter';
 
 @Component({
   selector: 'body[root]',
@@ -58,14 +59,26 @@ import type { UsersList } from './models/usersList';
                 <div
                   *ngFor="let item of messages"
                   [attr.self]="item.id === socket?.id ? true : null"
+                  [attr.connection]="item.event === 'connection' ? true : null"
+                  [attr.disconnection]="item.event === 'disconnection' ? true : null"
                   class="message">
-                  <div class="message-header">
-                    <span class="username">{{item.username}}</span>
+                  <div *ngIf="item.event !== 'connection' && item.event !== 'disconnection'">
+                    <div class="message-header">
+                      <span class="username">{{item.username}}</span>
 
-                    <span class="time">{{item.time}}</span>
+                      <span class="time">{{item.time}}</span>
+                    </div>
+
+                    <span [innerHTML]="item.message"></span>
                   </div>
 
-                  {{ item.message }}
+                  <div *ngIf="item.event === 'connection' && item.id !== socket?.id">
+                    <span class="username">{{item.username}} connected!</span>
+                  </div>
+
+                  <div *ngIf="item.event === 'disconnection'">
+                    <span class="username">{{item.username}} disconnected!</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -146,8 +159,7 @@ export class AppComponent implements AfterViewInit {
       return;
     }
 
-    //this.socket = io('http://localhost:5000');
-    this.socket = io('http://2515588.socketio.web.hosting-test.net/');
+    this.socket = io('http://localhost:5000');
 
     this.socket.on('connect', () => {
       this.connected = true;
@@ -155,14 +167,15 @@ export class AppComponent implements AfterViewInit {
       this.userID = this.socket?.id;
 
       this.socket?.emit('newUser', { username: this.username, id: this.socket.id });
+      this.socket?.emit('message', new MessageDto(this.socket?.id || '', this.username, '', 'connection'));
     });
 
     this.socket.on('messageResponse', data => {
-      this.messages.push(data);
-
-      if (data.id !== this.userID) {
-        this.audioPlayerRef.nativeElement.play();
+      if (data.id !== this.userID && Boolean(this.messages.length)) {
+        this.audioPlayerRef?.nativeElement?.play();
       }
+
+      this.messages = data;
 
       setTimeout(() => {
         this.scrollBottomTextarea();
@@ -192,7 +205,7 @@ export class AppComponent implements AfterViewInit {
       return;
     }
 
-    const data = new MessageDto(this.socket?.id || '', this.username, this.message.trim());
+    const data = new MessageDto(this.socket?.id || '', this.username, urlFilter(this.message.trim()));
     this.message = '';
 
     this.socket?.emit('message', data);

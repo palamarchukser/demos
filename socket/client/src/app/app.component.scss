@@ -33,7 +33,6 @@
   flex: 1;
   margin-bottom: -1.5rem;
   max-height: 65vh;
-  max-height: 65svh;
   overflow: auto;
   padding: 0 0 1.5rem;
 }
@@ -49,7 +48,6 @@
   flex: 1 100%;
   flex-direction: column;
   min-height: 65vh;
-  min-height: 65svh;
   overflow: hidden;
 }
 
@@ -64,11 +62,27 @@
   padding: .5rem 1rem;
   text-align: left;
   white-space: pre-line;
-  word-break: break-all;
+  word-break: break-word;
 
   &[self] {
     background: var(--message-self);
-    margin: 0.5rem 0.5rem 0.5rem auto;
+    margin: .5rem .5rem .5rem auto;
+
+    &[connection] {
+      display: none;
+    }
+  }
+
+  &[connection],
+  &[disconnection] {
+    background: none;
+    margin: .5rem auto;
+    font-size: 1.2rem;
+    padding: 0;
+  }
+
+  &[disconnection] {
+    color: red;
   }
 }
 .message-list {
